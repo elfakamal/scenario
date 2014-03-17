@@ -1,0 +1,52 @@
+
+
+*,
+*:after,
+*:before
+{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+html, body
+{
+  margin: 0px;
+  height: 100%;
+}
+
+#section-main-container
+{
+  height: 100%;
+}
+
+.center-container
+{
+  position: relative;
+}
+
+.absolute-center
+{
+  overflow: auto;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+
+nav[amd-component="header"]
+{
+  margin-bottom: 0px;
+}
+
+#section-main-container > #section-main-content {
+  background-image: url(../img/grid.png);
+  background-repeat: repeat;
+}
+

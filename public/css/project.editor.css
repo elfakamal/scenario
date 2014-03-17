@@ -1,0 +1,36 @@
+
+#div-create-project-form > form
+{
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  position: absolute;
+}
+
+#section-app-name.editor > div
+{
+  font-size: 50px;
+}
+
+#section-app-name.editor > div#div-app-name-1
+{
+  margin-bottom: -70px;
+  margin-left: -2px;
+  /*color: rgba(0,255,0,.3);*/
+  color: rgba(0,180,0,.3);
+}
+
+#section-app-name.editor > div#div-app-name-2
+{
+  /*color: rgba(255,0,0,.5);*/
+  color: rgba(180,0,0,.2);
+  margin-bottom: -70px;
+  margin-left: 2px;
+}
+
+#section-app-name.editor > div#div-app-name-3
+{
+  /*color: rgba(0,0,255,.3);*/
+  color: rgba(0,0,255,.4);
+  margin-bottom: 50px;
+}

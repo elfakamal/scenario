@@ -1,0 +1,31 @@
+<section ng-controller="ProjectEditorController" class="container-center">
+
+  <section id="section-app-name" class="editor">
+    <div id="div-app-name-1">Scenario</div>
+    <div id="div-app-name-2">Scenario</div>
+    <div id="div-app-name-3">Scenario</div>
+  </section>
+
+  <div id="div-create-project-form">
+    <form class="form-horizontal col-xs-4" role="form" ng-submit="create()">
+      <div class="form-group">
+        <label for="title" class="col-xs-3 control-label">Title</label>
+        <div class="col-xs-8">
+          <input type="text" class="form-control" ng-model="title" id="input-text-title" placeholder="Title" required/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="textarea-description" class="col-xs-3 control-label">Description</label>
+        <div class="col-xs-8">
+          <textarea ng-model="description" id="textarea-description" cols="30" rows="3" placeholder="Description" class="form-control" required></textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-xs-offset-3 col-xs-8">
+          <button type="submit" class="btn btn-default">Save</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</section>

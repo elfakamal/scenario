@@ -28,6 +28,14 @@ define(["require", "jquery", "constants", "underscore"], function(require, $, co
             if(_.has(Component, "preCompile"))
               Component.preCompile.apply(Component);
 
+            //TODO: if there is a problem with nested components :
+            //use jquery to check for automatic components in the "baseTemplate".
+            //if any, register them and remove auto-start-component attributes
+            //in order to prevent triggering the $apply inside the parent $apply.
+            //and then start the registered components (which are automatic).
+
+            //debugger;
+
             //we need the $apply function to persist the $compile work.
             $rootScope.$apply(function()
             {

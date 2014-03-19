@@ -1,6 +1,6 @@
 "use strict";
 
-define(["jquery", "./controllers/index"], function($) {
+define(["jquery", "./controllers/splash"], function($) {
   return {
     start: function() {
       console.log("Index::main::start - starting ...");

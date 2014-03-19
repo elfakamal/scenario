@@ -1,12 +1,12 @@
 'use strict';
 
 define(["app", "../../../services/global"], function(app) {
-  app.lazy.controller("IndexController",
-    ["$scope", "Global", function ($scope, Global) {
+  app.lazy.controller("SplashController",
+    ["$scope", function ($scope) {
 
     $scope.startProjectEditorComponent = function() {
       $scope.$emit("start-project-editor");
-      $scope.$emit("stop-index");
+      $scope.$emit("stop-splash");
     };
 
   }]);

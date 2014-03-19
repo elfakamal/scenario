@@ -1,6 +1,6 @@
 "use strict";
 
-define(["app", "underscore", "services/project"], function(app, _) {
+define(["app", "services/project"], function(app) {
   app.lazy.controller("ProjectEditorController",
     ["$scope", "$stateParams", "$location", "Project", function($scope, $stateParams, $location, Project) {
 

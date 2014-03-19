@@ -1,4 +1,5 @@
 <div class="" data-ng-controller="HeaderController">
+  
   <ul class="navbar-nav nav">
     <li>
       <a class="navbar-brand" href="/">Scenario - A flowchart builder</a>
@@ -8,6 +9,7 @@
       <a href="#!/{{item.link}}">{{item.title}}</a>
     </li>
   </ul>
+
   <ul class="navbar-nav nav pull-right" data-ng-hide="global.authenticated">
     <li><a href="signup">Signup</a>
     </li>
@@ -15,6 +17,7 @@
     <li><a href="signin">Signin</a>
     </li>
   </ul>
+  
   <ul class="navbar-nav nav pull-right" data-ng-show="global.authenticated">
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -26,4 +29,5 @@
       </ul>
     </li>
   </ul>
+  
 </div>

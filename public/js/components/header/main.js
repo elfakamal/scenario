@@ -15,7 +15,7 @@ define(["jquery", "angular", "./controllers/header"], function($, angular) {
 
         if(isUserConnected) {
           // $rootScope.$broadcast("start-project-editor");
-          $rootScope.$broadcast("start-index");
+          $rootScope.$broadcast("start-splash");
         } else {
           console.log("start-project-list");
           // $rootScope.$broadcast("start-project-list");

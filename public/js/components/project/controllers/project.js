@@ -1,7 +1,8 @@
 "use strict";
 
-define(["app"], function(app){
-  app.lazy.controller("ProjectController", ["$scope", "$stateParams", "Project", function($scope, Project) {
+define(["app", "services/project"], function(app) {
+  app.lazy.controller("ProjectController",
+    ["$scope", "$stateParams", "Project", function($scope, $stateParams, Project) {
 
     $scope.findOne = function() {
       Project.get({projectId: $stateParams.projectId}, function(project) {
@@ -9,5 +10,6 @@ define(["app"], function(app){
       });
     };
 
+    $scope.findOne();
   }]);
 });

@@ -7,7 +7,7 @@ define([
   "jquery-ui/jquery.ui.mouse",
   "jquery-ui/jquery.ui.draggable",
   "./controllers/toolbox"
-  ],
+],
   function($) {
 
   return {
@@ -17,7 +17,7 @@ define([
 
     loadComplete: function() {
       $("#section-toolbox-component").draggable({
-        handle: "div.drag-handle", 
+        handle: "div.drag-handle",
         containment: "parent"
       });
     }

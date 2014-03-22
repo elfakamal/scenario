@@ -2,10 +2,10 @@
 
 define(["app", "services/project"], function(app) {
   app.lazy.controller("ProjectEditorController",
-    ["$scope", "$stateParams", "$location", "Project", function($scope, $stateParams, $location, Project) {
+    ["$scope", "$stateParams", "$location", "ProjectModel", function($scope, $stateParams, $location, ProjectModel) {
 
     $scope.findOne = function() {
-      Project.get({
+      ProjectModel.get({
         projectId: $stateParams.projectId
       }, function(project) {
         $scope.project = project;
@@ -16,7 +16,7 @@ define(["app", "services/project"], function(app) {
       //the fact that we are in the body of a $scope function
       //allows us to refer to title using the "this" keyword.
       //it's like doing this "$scope.title".
-      var project = new Project({
+      var project = new ProjectModel({
         title: this.title,
         description: this.description
       });
@@ -31,9 +31,10 @@ define(["app", "services/project"], function(app) {
 
     $scope.update = function() {
       var project = $scope.project;
-      if (!project.updated) {
+
+      if (!project.updated)
         project.updated = [];
-      }
+
       project.updated.push(new Date().getTime());
 
       project.$update(function() {

@@ -1,6 +1,6 @@
 'use strict';
 
-define(["require", "lodash"], function(require, _) {
+define(["require", "underscore"], function(require, _) {
 
   var AMDComponent = function($compile, $rootScope) {
     return {
@@ -18,8 +18,8 @@ define(["require", "lodash"], function(require, _) {
          * and its base template from the views.
          */
         var bootstrapComponent = function() {
-          var main = "../../components/" + component + "/main";
-          var template = "text!../../components/" + component + "/views/base.html";
+          var main = "../components/" + component + "/main";
+          var template = "text!../components/" + component + "/views/base.html";
 
           //load the component and its view
           require([main, template], function(Component, baseTemplate)

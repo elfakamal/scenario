@@ -29,7 +29,6 @@ require.config({
     "angular-ui-router": {deps: ['angular']},
     "app": {deps: ['angular', 'constants']}
   },
-
   priority: ["angular"]
 });
 

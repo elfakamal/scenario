@@ -23,6 +23,12 @@ module.exports = function(grunt) {
         options: {
           livereload: true
         }
+      },
+      server: {
+        files: ['.rebooted'],
+        options: {
+          livereload: true
+        }
       }
     },
     jshint: {
@@ -33,6 +39,13 @@ module.exports = function(grunt) {
         }
       }
     },
+
+    open: {
+      server: {
+        url: 'http://localhost:3000'
+      }
+    },
+
     nodemon: {
       dev: {
         script: 'server.js',
@@ -45,10 +58,37 @@ module.exports = function(grunt) {
           env: {
             PORT: 3000
           },
-          cwd: __dirname
+          cwd: __dirname,
+
+          // omit this property if you aren't serving HTML files and 
+          // don't want to open a browser tab on start
+          callback: function (nodemon) {
+            var delay = 3000;
+
+            nodemon.on('log', function (event) {
+              console.log(event.colour);
+            });
+
+            // opens browser on initial server start
+            nodemon.on('config:update', function () {
+              // Delay before server listens on port
+              setTimeout(function() {
+                require('open')('http://localhost:3000');
+              }, delay);
+            });
+
+            // refreshes browser when server reboots
+            nodemon.on('restart', function () {
+              // Delay before server listens on port
+              setTimeout(function() {
+                require('fs').writeFileSync('.rebooted', 'rebooted');
+              }, delay);
+            });
+          }
         }
       }
     },
+
     concurrent: {
       tasks: ['nodemon', 'watch'],
       options: {
@@ -75,6 +115,7 @@ module.exports = function(grunt) {
   });
 
   //Load NPM tasks
+//  grunt.loadNpmTasks('grunt-open');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-mocha-test');

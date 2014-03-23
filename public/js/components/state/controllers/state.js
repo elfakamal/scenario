@@ -1,19 +1,19 @@
 "use strict";
 
 define(["app", "../models/state"], function(app) {
-  var StateController = function($scope) {
+  var StateController = function($scope, StateModel, $location) {
     
     $scope.create = function() {
       //the fact that we are in the body of a $scope function
       //allows us to refer to title using the "this" keyword.
       //it's like doing this "$scope.title".
-      var project = new ProjectModel({
+      var state = new StateModel({
         title: this.title,
         description: this.description
       });
 
-      project.$save(function(response) {
-        $location.path('projects/' + response._id);
+      state.$save(function(response) {
+        $location.path('states/' + response._id);
       });
 
       this.title = "";
@@ -22,5 +22,5 @@ define(["app", "../models/state"], function(app) {
 
   };
 
-  app.lazy.controller("StateController", ["$scope", StateController]);
+  app.lazy.controller("StateController", ["$scope", "StateModel", "$location", StateController]);
 });

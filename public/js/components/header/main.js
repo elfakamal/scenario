@@ -13,9 +13,10 @@ define(["jquery", "angular", "./controllers/header"], function($, angular) {
         //TODO: check whether the user is connected.
         isUserConnected = Global.authenticated;
 
+        $rootScope.$broadcast("start-index");
+
         if(isUserConnected) {
           // $rootScope.$broadcast("start-project-editor");
-          $rootScope.$broadcast("start-index");
         } else {
           console.log("start-project-list");
           // $rootScope.$broadcast("start-project-list");
@@ -27,6 +28,8 @@ define(["jquery", "angular", "./controllers/header"], function($, angular) {
       //setting the main content's height
       var documentHeight = $(document).height();
       $("#section-main-content").css("height", (documentHeight - 52) + "px");
+      //alert("header component loaded");
+
     }
   };
 });

@@ -39,7 +39,7 @@ module.exports = function(grunt) {
         options: {
           args: [],
           ignore: ['public/lib/**'],
-          ext: 'js',
+          ext: 'js,css,html',
           nodeArgs: ['--debug'],
           delayTime: 1,
           env: {

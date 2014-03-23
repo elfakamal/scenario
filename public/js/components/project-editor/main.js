@@ -1,6 +1,6 @@
 "use strict";
 
-define(["app", "./controllers/project-editor"], function(app) {
+define(["./controllers/project-editor"], function() {
   return {
 
   };

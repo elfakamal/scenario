@@ -1,13 +1,14 @@
 "use strict";
 
-define(["./controllers/project"], function() {
+define(["jquery", "./controllers/project"], function($) {
   return {
     preCompile: function () {
       //
     },
 
-    loadComplete: function(){
-      //
+    loadComplete: function() {
+      var documentHeight = $(document).height();
+      $("svg.project").css("height", (documentHeight - 52) + "px");
     }
   };
 });

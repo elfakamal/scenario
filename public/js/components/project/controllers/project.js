@@ -1,13 +1,28 @@
 "use strict";
 
-define(["app"], function(app){
-  app.lazy.controller("ProjectController", ["$scope", "$stateParams", "Project", function($scope, Project) {
+define(["app", "services/project"], function(app)
+{
+  var ProjectController = function($scope, $rootScope, $stateParams, ProjectModel)
+  {
+    $scope.states = [];
 
+    $rootScope.$on("add-state", function(state) {
+      $scope.states.push(state);
+    });
+
+    /**
+     * Retrieve the open project.
+     */
     $scope.findOne = function() {
-      Project.get({projectId: $stateParams.projectId}, function(project) {
+      ProjectModel.get({projectId: $stateParams.projectId}, function(project) {
         $scope.project = project;
       });
     };
 
-  }]);
+    $scope.findOne();
+  };
+
+  app.lazy.controller("ProjectController", [
+    "$scope", "$rootScope", "$stateParams", "ProjectModel", ProjectController
+  ]);
 });

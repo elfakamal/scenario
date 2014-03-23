@@ -11,7 +11,10 @@
     "angular-bootstrap": "0.10.0",
     "angular-ui-router": "#master",
     "requirejs": "~2.1.11",
-    "requirejs-text": "~2.0.10"
+    "requirejs-text": "~2.0.10",
+    "jquery-ui": "~1.10.4",
+    "lodash": "~2.4.1",
+    "jquery": "~2.1.0"
   },
   "resolutions": {
     "angular": "1.2.14"

@@ -1,6 +1,6 @@
 <div class="" ng-controller="ProjectListController">
   <div class="list-group">
-    <a ng-repeat="project in projects" href="#" class="list-group-item active">
+    <a ng-repeat="project in projects" href="#!/projects/{{project._id}}" class="list-group-item">
       <h4 class="list-group-item-heading">{{project.title}}</h4>
       <p class="list-group-item-text">{{project.description}}</p>
     </a>

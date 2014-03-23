@@ -1,8 +1,11 @@
-<section id="section-splash-screen" ng-controller="IndexController" class="center-container">
+<section id="section-splash-screen" ng-controller="SplashController" class="center-container">
   <section id="section-app-name" class="absolute-center splash">
     <div id="div-app-name-1">Scenario</div>
     <div id="div-app-name-2">Scenario</div>
     <div id="div-app-name-3">Scenario</div>
+
+    <section id="section-project-list" amd-component="project-list" auto-start-component></section>
+
     <button id="button-start-project" ng-click="startProjectEditorComponent()">Start a project</button>
   </section>
 </section>

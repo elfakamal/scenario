@@ -41,7 +41,7 @@ require([
     "angular-bootstrap",
     "angular-ui-router"
   ],
-
+  
   function(angular, app)
   {
     angular.element(document).ready(function() {

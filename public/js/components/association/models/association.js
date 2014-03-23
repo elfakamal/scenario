@@ -1,7 +1,7 @@
 "use strict";
 
 define(["app"], function(app) {
-  var AssociationModel = function() {
+  var AssociationModel = function($resource) {
     return $resource('associations/:associationId', {
       associationId: '@_id'
     }, {
@@ -11,5 +11,5 @@ define(["app"], function(app) {
     });
   };
 
-  app.lazy.factory("AssociationModel", [AssociationModel]);
+  app.lazy.factory("AssociationModel", ["$resource", AssociationModel]);
 });

@@ -1,15 +1,6 @@
 "use strict";
 
-define([
-  "jquery",
-  "jquery-ui/jquery.ui.core",
-  "jquery-ui/jquery.ui.widget",
-  "jquery-ui/jquery.ui.mouse",
-  "jquery-ui/jquery.ui.draggable",
-  "./controllers/toolbox"
-],
-  function($) {
-
+define(["jquery", "jquery-ui", "./controllers/toolbox"], function($) {
   return {
     preCompile: function() {
       //

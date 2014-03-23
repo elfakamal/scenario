@@ -13,15 +13,13 @@ define(["jquery", "angular", "./controllers/header"], function($, angular) {
         //TODO: check whether the user is connected.
         isUserConnected = Global.authenticated;
 
-        console.log("start-index");
-        $rootScope.$broadcast("start-index");
+        $rootScope.$emit("start-splash");
 
         if(isUserConnected) {
           console.log("user connected");
-          // $rootScope.$broadcast("start-project-editor");
+          // $rootScope.$emit("start-project-editor");
         } else {
           console.log("start-project-list");
-          // $rootScope.$broadcast("start-project-list");
         }
 
       }]);

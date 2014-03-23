@@ -6,9 +6,7 @@
 require.config({
   paths: {
     "jquery": "../lib/jquery/dist/jquery",
-    "jquery-ui": "../lib/jquery-ui/ui/",
-    "jquery-ui-core": "../lib/jquery-ui/ui/jquery.ui.core",
-    "jquery-ui-draggable": "../lib/jquery-ui/ui/jquery.ui.draggable",
+    "jquery-ui": "../lib/jquery-ui/ui/minified/jquery-ui.min",
     "angular": "../lib/angular/angular",
     "underscore": "../lib/lodash/dist/lodash.underscore",
     "angular-resource": "../lib/angular-resource/angular-resource",

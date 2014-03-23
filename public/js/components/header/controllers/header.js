@@ -16,7 +16,7 @@ define(["app"], function(app) {
 
     // for debug
     // $scope.startIndexComponent = function() {
-    //   $rootScope.$broadcast("start-index");
+    //   $rootScope.$emit("start-splash");
     // };
 
   }]);

@@ -5,8 +5,8 @@ define([
   "constants",
   "./config/route-config",
   "./config/location-config",
-  "./directives/amd-component",
-  "./services/global"
+  "./global/directives/amd-component",
+  "./global/services/global"
 ],
 function(angular, constants, routeConfig, locationConfig, AMDComponentDirective, Global) {
 
@@ -27,7 +27,7 @@ function(angular, constants, routeConfig, locationConfig, AMDComponentDirective,
   .config(['$controllerProvider', '$compileProvider', '$filterProvider', '$provide',
     function($controllerProvider, $compileProvider, $filterProvider, $provide)
     {
-      app.lazy = {
+      app.amd = {
         controller : $controllerProvider.register,
         directive  : $compileProvider.directive,
         filter     : $filterProvider.register,

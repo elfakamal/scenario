@@ -16,7 +16,8 @@ require.config({
     "text": "../lib/requirejs-text/text",
     "constants": "./config/constants",
     "app": "./app",
-    "services": "./services/"
+    "models": "./global/models/",
+    "services": "./global/services/"
   },
   shim: {
     "angular": {exports: 'angular'},

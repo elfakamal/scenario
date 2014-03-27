@@ -1,28 +1,34 @@
 "use strict";
 
-define(["app", "../models/toolbox"], function(app) {
+define(["app", "../models/toolbox", "services/scenario-factory"], function(app) {
 
-  app.amd.controller("ToolBoxController", ["$scope", "ToolBox", function($scope, ToolBox) {
+  var ScenarioFactory = function($scope, $rootScope, ToolBox, ScenarioFactory) {
     $scope.items = ToolBox;
 
-    $scope.createState = function() {
-      //the fact that we are in the body of a $scope function
-      //allows us to refer to title using the "this" keyword.
-      //it's like doing this "$scope.title".
-      var state = new StateModel({
-        title: this.title
+    var createState = function() {
+      //debugger;
+      var statePromise = ScenarioFactory.createState();
+      statePromise.then(function(state) {
+        $rootScope.$emit("project::add-state", state);
       });
-
-      state.$save(function(response) {
-        $location.path('states/' + response._id);
-      });
-
-      this.title = "";
     };
 
-    $scope.createAssociation = function() {
+    var createAssociation = function() {
 
     };
 
-  }]);
+    $scope.onToolClick = function(type)
+    {
+      switch(true)
+      {
+        case (type === "state") : {
+          createState();
+          break;
+        }
+      }
+    };
+
+  };
+
+  app.amd.controller("ToolBoxController", ["$scope", "$rootScope", "ToolBox", "ScenarioFactory", ScenarioFactory]);
 });

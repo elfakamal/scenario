@@ -14,8 +14,11 @@ require.config({
     "angular-bootstrap": "../lib/angular-bootstrap/ui-bootstrap",
     "angular-ui-router": "../lib/angular-ui-router/release/angular-ui-router",
     "text": "../lib/requirejs-text/text",
+    "Q": "../lib/q/q",
     "constants": "./config/constants",
     "app": "./app",
+
+    //folders
     "models": "./global/models/",
     "services": "./global/services/"
   },

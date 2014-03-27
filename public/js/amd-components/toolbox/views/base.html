@@ -3,6 +3,6 @@
     <div class="drag-handle icon-mixte-ionicons-11 absolute-center"></div>
   </div>
   <li ng-repeat="item in items">
-    <button class="btn btn-default {{item.icon}}" title="{{item.name}}"></button>
+    <button class="btn btn-default {{item.icon}}" title="{{item.name}}" ng-click="onToolClick(item.type)"></button>
   </li>
 </ul>

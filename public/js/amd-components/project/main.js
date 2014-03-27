@@ -2,6 +2,7 @@
 
 define(["jquery", "./controllers/project"], function($) {
   return {
+    viewNamespace: "http://www.w3.org/2000/svg",
     preCompile: function () {
       //
     },

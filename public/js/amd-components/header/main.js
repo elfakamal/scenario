@@ -1,7 +1,12 @@
 "use strict";
 
-define(["jquery", "angular", "./controllers/header"], function($, angular) {
+define(["jquery", "angular", "./controllers/header", "text!./views/base.html"], function($, angular, header, baseTemplate) {
   return {
+
+    template: {
+      base: baseTemplate,
+      namespace: ""
+    },
 
     preCompile: function()
     {

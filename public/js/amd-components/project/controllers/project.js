@@ -6,7 +6,7 @@ define(["app", "models/project"], function(app)
   {
     $scope.states = [];
 
-    $rootScope.$on("add-state", function(state) {
+    $rootScope.$on("project::add-state", function(event, state) {
       $scope.states.push(state);
     });
 

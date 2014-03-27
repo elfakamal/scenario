@@ -1,6 +1,6 @@
 'use strict';
 
-define(["require", "underscore"], function(require, _) {
+define(["require", "underscore", "../../config/constants"], function(require, _, constants) {
 
   var AMDComponent = function($compile, $rootScope) {
     return {
@@ -8,7 +8,7 @@ define(["require", "underscore"], function(require, _) {
 
       link: function($scope, $element, $attrs)
       {
-        var component = $attrs["amdComponent"];
+        var component = $attrs[constants.AMD_DIRECTIVE_NAME];
 
         if(typeof component === "undefined" || typeof component !== "string" || component === null)
           throw new Error("component is undefined / not a string / null");
@@ -18,27 +18,39 @@ define(["require", "underscore"], function(require, _) {
          * and its base template from the views.
          */
         var bootstrapComponent = function() {
-          var main = "../../amd-components/" + component + "/main";
-          var template = "text!../../amd-components/" + component + "/views/base.html";
+          var main = "../../" + constants.AMD_FOLDER_NAME + "/" + component + "/" + constants.COMPONENT_MAIN_FILE;
+          var template = "text!../../" + constants.AMD_FOLDER_NAME + "/" + component + "/views/" + constants.COMPONENT_MAIN_VIEW + ".html";
 
           //load the component and its view
           require([main, template], function(Component, baseTemplate)
           {
+            var preCompile = constants.COMPONENT_PRE_COMPILE_FUNCTION;
+            var loadComplete = constants.COMPONENT_LOAD_COMPLETE_FUNCTION;
+
             //it verfies whether the component has the preCompile method to call it.
-            if(_.has(Component, "preCompile"))
-              Component.preCompile.apply(Component);
+            if(_.has(Component, preCompile))
+              Component[preCompile].apply(Component);
 
             //we need the $apply function to persist the $compile work.
             $rootScope.$apply(function()
             {
+              var baseTemplate2 = Component.template.base;
+
               //load its view and replace the original container by the view.
-              var angularElement = $compile(baseTemplate)($scope);
+              var angularElement = $compile(baseTemplate2)($scope);
               $element.empty();
+
+              if(_.has(Component, "viewNamespace")) {
+                //debugger;
+
+                angularElement.attr("xmlns", Component["viewNamespace"]);
+              }
+
               $element.append(angularElement);
 
               //it verfies whether the component has the loadComplete method to call it.
-              if(_.has(Component, "loadComplete"))
-                Component.loadComplete.apply(Component);
+              if(_.has(Component, loadComplete))
+                Component[loadComplete].apply(Component);
             });
           });
         };
@@ -46,7 +58,7 @@ define(["require", "underscore"], function(require, _) {
         //if the component is intended to be started automatically, it will,
         //otherwise it will need the be started using an event,
         //for instance "start-<component name>".
-        if( _.has($attrs, "autoStartComponent") ) {
+        if( _.has($attrs, constants.COMPONENT_AUTO_START_ATTRIBUTE) ) {
           //automatically start a component
           bootstrapComponent();
         }

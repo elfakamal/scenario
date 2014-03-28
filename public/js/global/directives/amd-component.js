@@ -18,11 +18,11 @@ define(["require", "underscore", "../../config/constants"], function(require, _,
          * and its base template from the views.
          */
         var bootstrapComponent = function() {
+          console.log("AMDComponent::bootstrap " + component);
           var main = "../../" + constants.AMD_FOLDER_NAME + "/" + component + "/" + constants.COMPONENT_MAIN_FILE;
-          var template = "text!../../" + constants.AMD_FOLDER_NAME + "/" + component + "/views/" + constants.COMPONENT_MAIN_VIEW + ".html";
 
           //load the component and its view
-          require([main, template], function(Component, baseTemplate)
+          require([main], function(Component)
           {
             var preCompile = constants.COMPONENT_PRE_COMPILE_FUNCTION;
             var loadComplete = constants.COMPONENT_LOAD_COMPLETE_FUNCTION;
@@ -34,23 +34,26 @@ define(["require", "underscore", "../../config/constants"], function(require, _,
             //we need the $apply function to persist the $compile work.
             $rootScope.$apply(function()
             {
-              var baseTemplate2 = Component.template.base;
+              var baseTemplate = "";
 
-              //load its view and replace the original container by the view.
-              var angularElement = $compile(baseTemplate2)($scope);
-              $element.empty();
+              if(_.has(Component, "template") && _.has(Component.template, "base"))
+              {
+                baseTemplate = Component.template.base;
 
-              if(_.has(Component, "viewNamespace")) {
-                //debugger;
+                //load its view and replace the original container by the view.
+                var angularElement = $compile(baseTemplate)($scope);
+                $element.empty();
 
-                angularElement.attr("xmlns", Component["viewNamespace"]);
+                // if(_.has(Component, "viewNamespace")) {
+                //   angularElement.attr("xmlns", Component["viewNamespace"]);
+                // }
+
+                $element.append(angularElement);
               }
-
-              $element.append(angularElement);
 
               //it verfies whether the component has the loadComplete method to call it.
               if(_.has(Component, loadComplete))
-                Component[loadComplete].apply(Component);
+                Component[loadComplete].apply(Component, [$element]);
             });
           });
         };
@@ -77,6 +80,7 @@ define(["require", "underscore", "../../config/constants"], function(require, _,
 
         //listening for the stop event, to remove the component.
         $rootScope.$on("stop-" + component, function() {
+          console.log("AMDComponent::stop " + component);
           removeComponent();
         });
       }

@@ -1,15 +1,15 @@
 "use strict";
 
 define(["app"], function(app) {
-
   var StateDirective = function($rootScope) {
     return {
-      restrict: "A",
+      restrict: "E",
+      replace: true,
       scope: {},
+      templateUrl: "../js/amd-components/state/views/state.html",
 
       controller: function($scope, $element, $attrs) {
-        debugger;
-        
+        console.log("StateDirective::controller");
       },
 
       link: function($scope, $element, $attrs) {
@@ -20,11 +20,11 @@ define(["app"], function(app) {
         propertyRect.setAttribute("height", 20);
         propertyRect.setAttribute("style", "fill:yellowgreen");
 
-        debugger;
-        $element.appendChild(propertyRect);
+        console.log("StateDirective::link");
+        //$element.appendChild(propertyRect);
       }
-    }
-  }
+    };
+  };
 
-  app.amd.directive("State", ["$rootScope", StateDirective]);
+  app.amd.directive("scenarioState", ["$rootScope", StateDirective]);
 });

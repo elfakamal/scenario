@@ -13,6 +13,7 @@ define(["jquery", "angular", "./controllers/header", "text!./views/base.html"], 
       //getting access to the injector of the running app "scenario" from outside Angular.
       angular.element(document).injector().invoke(["$rootScope", "Global", function($rootScope, Global)
       {
+
         var isUserConnected = false;
 
         //TODO: check whether the user is connected.
@@ -20,12 +21,12 @@ define(["jquery", "angular", "./controllers/header", "text!./views/base.html"], 
 
         $rootScope.$emit("start-splash");
 
-        if(isUserConnected) {
-          console.log("user connected");
-          // $rootScope.$emit("start-project-editor");
-        } else {
-          console.log("start-project-list");
-        }
+        // if(isUserConnected) {
+        //   console.log("user connected");
+        //   // $rootScope.$emit("start-project-editor");
+        // } else {
+        //   console.log("start-project-list");
+        // }
 
       }]);
     },

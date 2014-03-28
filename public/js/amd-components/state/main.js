@@ -1,6 +1,6 @@
 "use strict";
 
-define(["./directives/state", "text!../views/base.html"], function(state, baseTemplate) {
+define(["text!./views/base.html", "./directives/state"], function(baseTemplate) {
   return {
     template: {
       base: baseTemplate,
@@ -11,7 +11,7 @@ define(["./directives/state", "text!../views/base.html"], function(state, baseTe
       //
     },
 
-    loadComplete: function(){
+    loadComplete: function($element){
       //
     }
   };

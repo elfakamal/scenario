@@ -1,7 +1,12 @@
 "use strict";
 
-define(["jquery", "jquery-ui", "./controllers/toolbox"], function($) {
+define(["jquery", "text!./views/base.html", "./controllers/toolbox", "jquery-ui"], function($, baseTemplate) {
   return {
+    template: {
+      base: baseTemplate,
+      namespace: ""
+    },
+
     preCompile: function() {
       //
     },

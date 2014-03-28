@@ -1,8 +1,13 @@
 "use strict";
 
-define(["jquery", "./controllers/project"], function($) {
+define(["jquery", "./controllers/project", "text!./views/base.html"], function($, project, baseTemplate) {
+
   return {
-    viewNamespace: "http://www.w3.org/2000/svg",
+    template: {
+      base: baseTemplate,
+      namespace: "http://www.w3.org/2000/svg"
+    },
+
     preCompile: function () {
       //
     },

@@ -1,6 +1,7 @@
 <ul id="ul-tool-box" class="nav list-unstyled" ng-controller="ToolBoxController">
-  <div class="toolbox-picker center-container">
-    <div class="drag-handle icon-mixte-ionicons-11 absolute-center"></div>
+  <div class="drag-handle toolbox-picker center-container">
+    <state></state>
+    <div class="icon-mixte-ionicons-11 absolute-center"></div>
   </div>
   <li ng-repeat="item in items">
     <button class="btn btn-default {{item.icon}}" title="{{item.name}}" ng-click="onToolClick(item.type)"></button>
